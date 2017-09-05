@@ -46,6 +46,9 @@ if (file_exists($prepath))
 	include $prepath;
 	}
 
+// Meta
+include "meta/pre.php";	
+
 // override primary query
 if($override==0)
 	{
@@ -197,6 +200,9 @@ if (file_exists($postpath))
 	{
 	include $postpath;
 	}	
+	
+// Meta
+include "meta/post.php";	
 
 //echo $head['ACCEPT'] . "<br />";
 if(isset($head['ACCEPT']) && $head['ACCEPT'] == 'text/csv')
