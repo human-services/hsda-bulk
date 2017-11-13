@@ -71,8 +71,13 @@ foreach($paths as $path => $path_details)
   		//echo $route . ' == ' . $verb . "\n";
   		
   		$extpath = str_replace("/","-",$route);
+  		$extpath = str_replace("{","-",$extpath);
+  		$extpath = str_replace("}","-",$extpath);
   		if(substr($extpath,0,1)=="-"){ $extpath = substr($extpath,1,strlen($extpath)); }
   		if(substr($extpath,strlen($extpath)-1,1)=="-"){ $extpath = substr($extpath,0,strlen($extpath)-1); }
+  		$extpath = str_replace("--","-",$extpath);
+  		$extpath = str_replace("_","-",$extpath);
+  		
   		$prepath = "pre/" . $extpath . ".php";
   		$postpath = "post/" . $extpath . ".php";
 
@@ -122,6 +127,8 @@ foreach($paths as $path => $path_details)
 		// See if they have access
 		if($access==1 || ($appid == $admin_login && $appkey == $admin_code))
 			{
+				
+			//echo $route2;	
 	
 	  		// GET
 	    	if($verb == 'get')
